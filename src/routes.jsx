@@ -1,12 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Home from './pages/Home';
+import Characters from './pages/Characters';
+import Deaths from './pages/Deaths';
+import Episodes from './pages/Episodes';
+import Quotes from './pages/Quotes';
 
 export default function Routes() {
     return (
         <BrowserRouter>
-            <Route path="/" exact component={Home} />
+            <Switch>
+                <Route path="/" exact>
+                    <Redirect to="/characters" />
+                </Route>
+                
+                <Route path="/characters" component={Characters} />
+                <Route path="/deaths" component={Deaths} />
+                <Route path="/episodes" component={Episodes} />
+                <Route path="/quotes" component={Quotes} />
+            </Switch>
         </BrowserRouter>
     );
 }
