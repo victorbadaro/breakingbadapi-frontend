@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
 import MainSection from '../../components/MainSection';
+import Item from '../../components/Item';
 import Footer from '../../components/Footer';
 
+import date from '../../utils/date';
 import api from '../../services/api';
 
 export default function Episodes() {
@@ -11,7 +13,13 @@ export default function Episodes() {
 
     useEffect(() => {
         async function fetchData() {
-            const episodes = await getEpisodes();
+            let episodes = await getEpisodes();
+
+            episodes = episodes.map(episode => ({
+                ...episode,
+                air_date: date(episode.air_date).isoFormat,
+                characters: episode.characters.join(', ')
+            }))
             setEpisodes(episodes);
         }
 
@@ -29,7 +37,17 @@ export default function Episodes() {
         <>
             <Header />
             <MainSection title="Episodes">
-
+                {episodes.map(episode => (
+                    <Item key={episode.episode_id}>
+                        <h3>{episode.title}</h3>
+                        <div className="item-content">
+                            <p>Season: {episode.season}</p>
+                            <p>Episode: {episode.episode}</p>
+                            <p>Air date: {episode.air_date}</p>
+                            <p>Characters: {episode.characters}</p>
+                        </div>
+                    </Item>
+                ))}
             </MainSection>
             <Footer />
         </>
