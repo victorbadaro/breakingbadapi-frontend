@@ -13,10 +13,12 @@
 
 Este projeto é uma aplicação Front-end **web** para consumir os dados da [Breaking Bad API](https://www.breakingbadapi.com/).
 <br>
+<br>
 
 ## 🚀 Tecnologias utilizadas
 
 Este projeto foi desenvolvido utilizando **[ReactJS](https://reactjs.org/)** 😍
+<br>
 <br>
 
 ## 🔽 Como baixar o projeto
