@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
+import MainSection from '../../components/MainSection';
 import Card from '../../components/Card';
+import Footer from '../../components/Footer';
 
 import date from '../../utils/date';
 import api from '../../services/api';
+
+import './styles.css';
 
 export default function Home() {
     const [characters, setCharacters] = useState([]);
@@ -35,8 +39,7 @@ export default function Home() {
     return (
         <>
             <Header />
-            <section>
-                <h1>Characters</h1>
+            <MainSection title="Characters">
                 <div className="cards">
                     {characters.map(character => (
                         <Card
@@ -51,7 +54,8 @@ export default function Home() {
                         />
                     ))}
                 </div>
-            </section>
+            </MainSection>
+            <Footer />
         </>
     );
 }

@@ -14,6 +14,12 @@ body {
     background-size: cover;
 }
 
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -35,28 +41,4 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-section {
-    margin: 96px auto;
-    padding: 24px 32px;
-    width: 90%;
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-}
-
-section h1 {
-    margin-bottom: 24px;
-    padding: 12px 24px;
-    width: fit-content;
-    border-radius: 4px;
-    background-image: linear-gradient(to right, #91CB3E, #53A548, #4C934C);
-    color: #222;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
 }

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
+import MainSection from '../../components/MainSection';
+import Footer from '../../components/Footer';
+
 import api from '../../services/api';
 
 export default function Quotes() {
@@ -27,12 +30,14 @@ export default function Quotes() {
     return (
         <>
             <Header />
-            <h1>Quotes Page</h1>
-            <ul>
-                {quotes.map(quote => (
-                    <li key={quote.quote_id}>{quote.quote}</li>
-                ))}
-            </ul>
+            <MainSection title="Quotes">
+
+            </MainSection>
+            <Footer />
+
+            {/* {quotes.map(quote => (
+                <li key={quote.quote_id}>{quote.quote}</li>
+            ))} */}
         </>
     );
 }

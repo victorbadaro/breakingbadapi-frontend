@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
+import MainSection from '../../components/MainSection';
+import Footer from '../../components/Footer';
+
 import api from '../../services/api';
 
 export default function Episodes() {
@@ -15,8 +18,6 @@ export default function Episodes() {
         fetchData();
     }, []);
 
-    console.log(episodes);
-
     async function getEpisodes() {
         const response = await api.get('episodes');
         const episodes = response.data;
@@ -27,12 +28,10 @@ export default function Episodes() {
     return (
         <>
             <Header />
-            <h1>Episodes Page</h1>
-            <ul>
-                {episodes.map(episode => (
-                    <li key={episode.episode_id}>{episode.title}</li>
-                ))}
-            </ul>
+            <MainSection title="Episodes">
+
+            </MainSection>
+            <Footer />
         </>
     );
 }

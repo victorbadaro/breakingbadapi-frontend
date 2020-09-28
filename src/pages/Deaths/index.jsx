@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
+import MainSection from '../../components/MainSection';
+import Footer from '../../components/Footer';
 
 import api from '../../services/api';
+
+import './styles.css';
 
 export default function Deaths() {
     const [deaths, setDeaths] = useState([]);
@@ -16,8 +20,6 @@ export default function Deaths() {
         fetchData();
     }, []);
 
-    console.log(deaths)
-
     async function getDeaths() {
         const response = await api.get('deaths');
         const deaths = response.data;
@@ -28,12 +30,10 @@ export default function Deaths() {
     return (
         <>
             <Header />
-            <h1>Deaths Page</h1>
-            <ul>
-                {deaths.map(death => (
-                    <li key={death.death_id}>{death.death}</li>
-                ))}
-            </ul>
+            <MainSection title="Deaths">
+
+            </MainSection>
+            <Footer />
         </>
     );
 }
