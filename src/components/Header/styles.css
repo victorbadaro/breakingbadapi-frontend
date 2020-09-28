@@ -1,4 +1,42 @@
 nav {
-    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 28px;
+    z-index: 999;
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     color: #fff;
+}
+
+nav a {
+    position: relative;
+    text-transform: lowercase;
+    transition: color 200ms;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    border-radius: 4px;
+    background-image: linear-gradient(to right, #91CB3E, #53A548, #4C934C);
+    transition: width 200ms;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: #91CB3E;
+}
+
+nav a:hover::after {
+    width: 100%;
 }

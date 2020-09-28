@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
+import Card from '../../components/Card';
 
+import date from '../../utils/date';
 import api from '../../services/api';
 
 export default function Home() {
@@ -9,14 +11,19 @@ export default function Home() {
 
     useEffect(() => {
         async function fetchData() {
-            const characters = await getCharacters();
+            let characters = await getCharacters();
+
+            characters = characters.map(character => ({
+                ...character,
+                birthday: character.birthday !== 'Unknown' ? date(character.birthday).isoFormat : 'Unknown',
+                appearance: character.appearance ? character.appearance.join(', ') : ''
+            }));
+
             setCharacters(characters);
         }
 
         fetchData();
     }, []);
-
-    console.log(characters);
 
     async function getCharacters() {
         const response = await api.get('characters')
@@ -28,12 +35,23 @@ export default function Home() {
     return (
         <>
             <Header />
-            <h1>Characters Page</h1>
-            <ul>
-                {characters.map(character => (
-                    <li key={character.char_id}>{character.name}</li>
-                ))}
-            </ul>
+            <section>
+                <h1>Characters</h1>
+                <div className="cards">
+                    {characters.map(character => (
+                        <Card
+                            key={character.char_id}
+                            name={character.name}
+                            birthday={character.birthday}
+                            img={character.img}
+                            status={character.status}
+                            nickname={character.nickname}
+                            appearance={character.appearance}
+                            portrayed={character.portrayed}
+                        />
+                    ))}
+                </div>
+            </section>
         </>
     );
 }
